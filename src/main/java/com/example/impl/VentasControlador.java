@@ -29,7 +29,7 @@ public class VentasControlador {
 
 		ventasRepository.save(ventas);
 		model.addAttribute("ventas", ventasRepository.findAll());
-		return "index";
+		return "venta/lista";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -50,7 +50,7 @@ public class VentasControlador {
 
 		ventasRepository.save(ventas);
 		model.addAttribute("ventas", ventasRepository.findAll());
-		return "index";
+		return "venta/lista";
 	}
 
 	@GetMapping("/eliminarventa/{id}")
@@ -59,6 +59,6 @@ public class VentasControlador {
 				.orElseThrow(() -> new IllegalArgumentException("Id de la venta es incorrecto:" + id));
 		ventasRepository.delete(ventas);
 		model.addAttribute("ventas", ventasRepository.findAll());
-		return "index";
+		return "venta/lista";
 	}
 }

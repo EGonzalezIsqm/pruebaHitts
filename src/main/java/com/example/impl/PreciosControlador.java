@@ -5,20 +5,15 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.api.PreciosRepository;
-import com.example.entidades.Clientes;
 import com.example.entidades.Precios;
 
 @Controller
-@RequestMapping("/precios")
 public class PreciosControlador {
 
 	@Autowired
@@ -32,7 +27,7 @@ public class PreciosControlador {
 
 		preciosRepository.save(precios);
 		model.addAttribute("precios", preciosRepository.findAll());
-		return "index";
+		return "precio/lista";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -53,7 +48,7 @@ public class PreciosControlador {
 
 		preciosRepository.save(precios);
 		model.addAttribute("clientes", preciosRepository.findAll());
-		return "index";
+		return "precio/lista";
 	}
 
 	@GetMapping("/eliminarprecio/{id}")
@@ -62,7 +57,7 @@ public class PreciosControlador {
 				.orElseThrow(() -> new IllegalArgumentException("Id del precios incorrecto:" + id));
 		preciosRepository.delete(precios);
 		model.addAttribute("precios", preciosRepository.findAll());
-		return "index";
+		return "precio/lista";
 	}
 	
 	
